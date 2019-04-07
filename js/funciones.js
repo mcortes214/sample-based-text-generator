@@ -5,12 +5,23 @@ var string = "ingresar un texto y clickear el botón para calcular la probabilid
 
 $('document').ready(function(){
   $('#procesar').on('click',function(){
-    // $(this).html("Procesando...");
+
     string='';
     string = $('#textoIngresado').val();
-    analizarTexto3Char(string);
-    $('#textoProcesado').html(generarTexto3Char(letrasAGenerar));
-    // $(this).html("Procesar");
+
+    //una letra
+    if($('#metodo').val()=='unaLetra'){
+      console.log('una letra');
+      analizarTexto(string);
+      $('#textoProcesado').html(generarTexto(letrasAGenerar));
+    }
+    
+    //dos letras
+    else if($('#metodo').val()=='dosLetras'){
+      analizarTexto3Char(string);
+      $('#textoProcesado').html(generarTexto3Char(letrasAGenerar));
+    }
+
   });
   $('#sampleAleman').on('click',function(){
     ///console.log('click');
