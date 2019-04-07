@@ -1,0 +1,19 @@
+body{
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+button{
+  display: block;
+  margin: 10px auto;
+}
+
+textarea{
+  width:50%;
+  resize: none;
+}
+
+#textoProcesado{
+  font-size: 1.2em;
+}
