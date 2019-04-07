@@ -1,5 +1,5 @@
 var probabilidades = {}
-var letrasAGenerar = 300;
+var letrasAGenerar = 600;
 
 var string = "ingresar un texto y clickear el botón para calcular la probabilidad de letras";
 
@@ -8,8 +8,8 @@ $('document').ready(function(){
     // $(this).html("Procesando...");
     string='';
     string = $('#textoIngresado').val();
-    analizarTexto(string);
-    $('#textoProcesado').html(generarTexto(letrasAGenerar));
+    analizarTexto3Char(string);
+    $('#textoProcesado').html(generarTexto3Char(letrasAGenerar));
     // $(this).html("Procesar");
   });
   $('#sampleAleman').on('click',function(){
