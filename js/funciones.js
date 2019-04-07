@@ -1,27 +1,36 @@
 var probabilidades = {}
-var letrasAGenerar = 100;
+var letrasAGenerar = 600;
 
 var string = "ingresar un texto y clickear el botón para calcular la probabilidad de letras";
 
 $('document').ready(function(){
-  $('#procesar').click(function(){
+  $('#procesar').on('click',function(){
+    $(this).html("Procesando...");
     string='';
     string = $('#textoIngresado').val();
     analizarTexto(string);
     $('#textoProcesado').html(generarTexto(letrasAGenerar));
+    $(this).html("Procesar");
   });
-  $('#sampleItaliano').click(function(){
-    $('#textoIngresado').html("La battaglia di Waterloo (denominata inizialmente dai francesi battaglia di Mont Saint-Jean e dai prussiani battaglia di Belle-Alliance) si svolse il 18 giugno 1815 durante la guerra della Settima coalizione fra le truppe francesi guidate da Napoleone Bonaparte e gli eserciti britannici del Duca di Wellington e prussiano del feldmaresciallo Gebhard Leberecht von Blücher. Fu una delle più combattute e sanguinose battaglie delle guerre napoleoniche, nonché l'ultima battaglia di Napoleone, segnando la sua definitiva sconfitta e il conseguente esilio a Sant'Elena. La battaglia in realtà ebbe luogo nel territorio del villaggio di Mont-Saint-Jean, situato alcuni chilometri a sud della cittadina di Waterloo, nella quale si trovava il quartier generale del Duca di Wellington. Dopo la fuga di Napoleone dall'isola d'Elba nel marzo 1815, numerosi Stati europei si unirono in un'alleanza militare dando vita alla settima coalizione, con lo scopo di sconfiggere definitivamente l'imperatore francese. Napoleone decise di attaccare di sorpresa i due eserciti che Regno Unito e Prussia avevano raggruppato in Belgio; l'imperatore sperava di raggiungere una rapida vittoria sfruttando la scarsa coesione dei suoi avversari. Due giorni prima di Waterloo i francesi avevano sconfitto i prussiani nella battaglia di Ligny, ma Wellington, informato che Blücher era riuscito a riorganizzare il suo esercito e sembrava intenzionato a marciare in suo aiuto, prese la decisione di rischiare una battaglia contro le forze di Napoleone. Il generale britannico schierò i suoi uomini in difesa lungo la scarpata di Mont-Saint-Jean, vicino alla strada per Bruxelles, confidando nell'aiuto dei prussiani. Napoleone sferrò una serie di sanguinosi attacchi contro le linee britanniche a partire dalle ore 11:30 e nel tardo pomeriggio sembrò vicino alla vittoria, ma l'ostinata resistenza del nemico e l'arrivo in massa dei prussiani decisero alla fine la battaglia a favore dei coalizzati. Ancora oggi nei pressi di Waterloo è ricordata la grande battaglia con una serie di monumenti, ed esiste un museo dedicato al famoso scontro. L'intera zona è un parco storico.");
+  $('#sampleAleman').on('click',function(){
+    ///console.log('click');
+    $('#textoIngresado').html("Jeder hat das Recht auf Bildung. Die Bildung ist unentgeltlich, zum mindesten der Grundschulunterricht und die grundlegende Bildung. Der Grundschulunterricht ist obligatorisch. Fach- und Berufsschulunterricht müssen allgemein verfügbar gemacht werden, und der Hochschulunterricht muß allen gleichermaßen entsprechend ihren Fähigkeiten offenstehen. Die Bildung muß auf die volle Entfaltung der menschlichen Persönlichkeit und auf die Stärkung der Achtung vor den Menschenrechten und Grundfreiheiten gerichtet sein. Sie muß zu Verständnis, Toleranz und Freundschaft zwischen allen Nationen und allen rassischen oder religiösen Gruppen beitragen und der Tätigkeit der Vereinten Nationen für die Wahrung des Friedens förderlich sein. Die Eltern haben ein vorrangiges Recht, die Art der Bildung zu wählen, die ihren Kindern zuteil werden soll.");
+  });
+  $('#sampleEspañol').on('click',function(){
+    $('#textoIngresado').html("Doña Uzeada de Ribera Maldonado de Bracamonte y Anaya era baja, rechoncha, abigotada. Ya no existia razon para llamar talle al suyo. Sus colores vivos, sanos, podian mas que el albayalde y el soliman del afeite, con que se blanqueaba por simular melancolias. Gastaba dos parches oscuros, adheridos a las sienes y que fingian medicamentos. Tenia los ojitos ratoniles, maliciosos. Sabia dilatarlos duramente o desmayarlos con recato o levantarlos con disimulo. Caminaba contoneando las imposibles caderas y era dificil, al verla, no asociar su estampa achaparrada con la de ciertos palmipedos domesticos. Sortijas celestes y azules le ahorcaban las falanges.");
+  });
+  $('#sampleMixto').on('click',function(){
+    $('#textoIngresado').html("Doña Uzeada de Ribera Maldonado de Bracamonte y Anaya era baja, rechoncha, abigotada. Ya no existia razon para llamar talle al suyo. Sus colores vivos, sanos, podian mas que el albayalde y el soliman del afeite, con que se blanqueaba por simular melancolias. Gastaba dos parches oscuros, adheridos a las sienes y que fingian medicamentos. Tenia los ojitos ratoniles, maliciosos. Sabia dilatarlos duramente o desmayarlos con recato o levantarlos con disimulo. Caminaba contoneando las imposibles caderas y era dificil, al verla, no asociar su estampa achaparrada con la de ciertos palmipedos domesticos. Sortijas celestes y azules le ahorcaban las falanges. Jeder hat das Recht auf Bildung. Die Bildung ist unentgeltlich, zum mindesten der Grundschulunterricht und die grundlegende Bildung. Der Grundschulunterricht ist obligatorisch. Fach- und Berufsschulunterricht müssen allgemein verfügbar gemacht werden, und der Hochschulunterricht muß allen gleichermaßen entsprechend ihren Fähigkeiten offenstehen. Die Bildung muß auf die volle Entfaltung der menschlichen Persönlichkeit und auf die Stärkung der Achtung vor den Menschenrechten und Grundfreiheiten gerichtet sein. Sie muß zu Verständnis, Toleranz und Freundschaft zwischen allen Nationen und allen rassischen oder religiösen Gruppen beitragen und der Tätigkeit der Vereinten Nationen für die Wahrung des Friedens förderlich sein.");
   });
 });
 
 function generarTexto(n){
   var textoFinal = '';
-  console.log('caracteres a generar: '+n);
+  ///console.log('caracteres a generar: '+n);
   //Selección aleatoria de primera letra
   //Basado en: https://stackoverflow.com/a/15106541/10824377
   var keys = Object.keys(probabilidades);
-  // console.log(keys);
+  // ///console.log(keys);
   var primeraLetraAleatoria = keys[ keys.length * Math.random() << 0];
   var keysPrimeraLetra = probabilidades[primeraLetraAleatoria];
 
@@ -30,15 +39,15 @@ function generarTexto(n){
   var sumaDeOcurrencias;
 
   //Loop: Para cada letra generada
-  console.log('----- Inicio de loop');
+  ///console.log('----- Inicio de loop');
   for(var i=0; i<n; i++){
-    console.log('-- Nueva letra --');
+    ///console.log('-- Nueva letra --');
     sumaDeOcurrencias=0;
     textoFinal += letraActual;
-    console.log('Letra actual: '+letraActual);
+    ///console.log('Letra actual: '+letraActual);
     var probsLetraActual = probabilidades[letraActual];
-    console.log('Array de pesos de cada letra que puede seguir a la letra actual: ');
-    console.log(probsLetraActual);
+    ///console.log('Array de pesos de cada letra que puede seguir a la letra actual: ');
+    ///console.log(probsLetraActual);
     var keysLetraActual = Object.keys(probsLetraActual);
     //Recorrer todas las letras y sumar un número total de ocurrencias
     var arraySegundasLetrasIteradas = [];
@@ -49,13 +58,13 @@ function generarTexto(n){
         arraySegundasLetrasIteradas.push(keysLetraActual[j]);
       }
     }
-    console.log('Suma de ocurrencias: '+sumaDeOcurrencias);
-    console.log('Array para selección de número random:');
-    console.log(arraySegundasLetrasIteradas);
+    ///console.log('Suma de ocurrencias: '+sumaDeOcurrencias);
+    ///console.log('Array para selección de número random:');
+    ///console.log(arraySegundasLetrasIteradas);
     var r = Math.floor(Math.random()*sumaDeOcurrencias);
-    console.log('Número aleatorio: '+r);
+    ///console.log('Número aleatorio: '+r);
     letraSiguiente = arraySegundasLetrasIteradas[r];
-    console.log('Letra siguiente: '+letraSiguiente);
+    ///console.log('Letra siguiente: '+letraSiguiente);
 
     //actualización para el siguiente ciclo
     letraActual = letraSiguiente;
@@ -69,7 +78,7 @@ function analizarTexto(str){
   la primera palabra no entra en el cálculo de probabilidades, todas las demás sí
   (incluyendo la última letra de la última palabra).*/
   probabilidades = {}
-  console.log(str);
+  ///console.log(str);
 
   //1- Análisis de las letras
   for (var i = 0; i < str.length; i++) {
