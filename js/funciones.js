@@ -1,16 +1,16 @@
 var probabilidades = {}
-var letrasAGenerar = 600;
+var letrasAGenerar = 300;
 
 var string = "ingresar un texto y clickear el botón para calcular la probabilidad de letras";
 
 $('document').ready(function(){
   $('#procesar').on('click',function(){
-    $(this).html("Procesando...");
+    // $(this).html("Procesando...");
     string='';
     string = $('#textoIngresado').val();
     analizarTexto(string);
     $('#textoProcesado').html(generarTexto(letrasAGenerar));
-    $(this).html("Procesar");
+    // $(this).html("Procesar");
   });
   $('#sampleAleman').on('click',function(){
     ///console.log('click');
@@ -19,8 +19,11 @@ $('document').ready(function(){
   $('#sampleEspañol').on('click',function(){
     $('#textoIngresado').html("Doña Uzeada de Ribera Maldonado de Bracamonte y Anaya era baja, rechoncha, abigotada. Ya no existia razon para llamar talle al suyo. Sus colores vivos, sanos, podian mas que el albayalde y el soliman del afeite, con que se blanqueaba por simular melancolias. Gastaba dos parches oscuros, adheridos a las sienes y que fingian medicamentos. Tenia los ojitos ratoniles, maliciosos. Sabia dilatarlos duramente o desmayarlos con recato o levantarlos con disimulo. Caminaba contoneando las imposibles caderas y era dificil, al verla, no asociar su estampa achaparrada con la de ciertos palmipedos domesticos. Sortijas celestes y azules le ahorcaban las falanges.");
   });
-  $('#sampleMixto').on('click',function(){
+  $('#sampleMixto1').on('click',function(){
     $('#textoIngresado').html("Doña Uzeada de Ribera Maldonado de Bracamonte y Anaya era baja, rechoncha, abigotada. Ya no existia razon para llamar talle al suyo. Sus colores vivos, sanos, podian mas que el albayalde y el soliman del afeite, con que se blanqueaba por simular melancolias. Gastaba dos parches oscuros, adheridos a las sienes y que fingian medicamentos. Tenia los ojitos ratoniles, maliciosos. Sabia dilatarlos duramente o desmayarlos con recato o levantarlos con disimulo. Caminaba contoneando las imposibles caderas y era dificil, al verla, no asociar su estampa achaparrada con la de ciertos palmipedos domesticos. Sortijas celestes y azules le ahorcaban las falanges. Jeder hat das Recht auf Bildung. Die Bildung ist unentgeltlich, zum mindesten der Grundschulunterricht und die grundlegende Bildung. Der Grundschulunterricht ist obligatorisch. Fach- und Berufsschulunterricht müssen allgemein verfügbar gemacht werden, und der Hochschulunterricht muß allen gleichermaßen entsprechend ihren Fähigkeiten offenstehen. Die Bildung muß auf die volle Entfaltung der menschlichen Persönlichkeit und auf die Stärkung der Achtung vor den Menschenrechten und Grundfreiheiten gerichtet sein. Sie muß zu Verständnis, Toleranz und Freundschaft zwischen allen Nationen und allen rassischen oder religiösen Gruppen beitragen und der Tätigkeit der Vereinten Nationen für die Wahrung des Friedens förderlich sein.");
+  });
+  $('#sampleMixto2').on('click', function(){
+    $('#textoIngresado').html("O Brasil é um país que sempre foi referido por outras nações por seu tamanho ou por sua população. Mas em discussões entre os cientistas, jornalistas, economistas, e experientes internacionais, este país é muitas vezes caracterizado como um país subdesenvolvido. A análise dos dados permitiu vincular os eleitores às duas tendências previstas: maior indiferença eleitoral e maior intenção de voto na esquerda. Chiamata anche con le antonomasie di lo Stivale per la sua forma a stivale e bel paese in ragione del suo clima e delle sue bellezze naturali ed artistiche, geograficamente l'Italia è costituita da tre parti: una continentale, delineata a nord dalle Alpi e a sud dalla linea convenzionale che congiunge La Spezia con Rimini, una peninsulare, che si allunga nel Mediterraneo in direzione nord ovest - sud est, ed una insulare, che comprende le due maggiori isole del Mediterraneo, la Sardegna e la Sicilia presso la quale, in corrispondenza dell'isola di Pantelleria, si ha la minima distanza dall'Africa, distante circa 70 chilometri. I confini territoriali si estendono complessivamente per 1.800 chilometri, mentre lo sviluppo costiero raggiunge i 7.500 chilometri.");
   });
   $('#sampleRuso').on('click',function(){
     $('#textoIngresado').html('Недавно Николя, студент из Франции, спросил нашего преподавателя русского языка: - В русском языке есть "плохие" слова? Ну, вы понимаете, какие? - Да, я понимаю. В русском языке такие слова есть. Но я не могу их вам сказать! - Я думаю мы должны их знать. - Да, сказал Стен, американец. - Мы не будем говорить эти слова, но мы должны их понимать. Кто-нибудь может нам их сказать. Я слышал, есть даже специальные словари таких слов. - А я знаю одно очень "плохое" русское слово, но не могу сказать. Почти каждое утро я слышу его в трамвае. Оно начинается на букву "б", - сказал Алан, англичанин. - Скажи, Алан! Это нормально. "Плохое" слово - тоже слово. Мы изучаем русский язык. Мы должны знать все слова! - сказал Стен. - Да, я тоже так думаю! - сказал Николя. - Но здесь преподаватель и девушки! Я не могу! - Скажи, Алан! - сказали девушки-американки. - Не говори! - сказала Масуми, студентка из Японии. - Ты можешь выйти коридор на две минуты, - сказали ей девушки-американки. - Хорошо. Я это слово напишу, - сказал Стен. Он вышел к доске и написал: "БАРДАК". - Это не плохое слово. "Бардак" - значит "беспорядок". - сказал счастливый преподаватель.');

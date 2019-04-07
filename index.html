@@ -10,17 +10,19 @@
     <link rel="canonical" href="">
     <link rel="stylesheet" href="css/estilos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="js/funcionesExperimental.js"></script>
     <script src="js/funciones.js"></script>
   </head>
   <body>
     <h1>Sample-based Text Generator</h1>
     <p>This is a Javascript program to procedurally generate text that resembles an input sample text. It was conceived as a tool for conlanging and other artistic uses, as it serves as a generator of random words seemingly pertaining to a certain language or language family, and more interestingly, it allows to mix the "feeling" of several languages, by inputting a sample text in more than one language.</p>
     <p>This is achieved by analysing the characters that compose the text in pairs, and identifying how often a given letter follows another letter. For example, if the input string is "ananas", there are two instances of "an" and one instance of "as", which means that there is a 66% chance of an A being followed by an N, and a 33% chance of it being followed by an S. Not only letters are considered characters, but also numbers and special characters such as parentheses, which are likewise analysed.</p>
-    <p>After that, the program picks a random initial character and chooses the next one based on those probability rules. It iterates the process over 300 characters to compose a text.</p>
+    <p>After that, the program picks a random initial character and chooses the next one based on those probability rules. This process is iterated over 300 characters to compose a text.</p>
     <p>This is a work in progress. In its current state the output does resemble the original language of the sample text, but may contain impossible consonant clusters, overly repeated characters, very long or very short words, or other weird results. Also, the way the program works makes it impossible to match opening and closing parentheses or quotes, or analysing or producing text in languages with writing directions other than left-to-right. However, it may serve as inspiration, and its <a href="https://github.com/mcortes214/sample-based-text-generator">source code</a> can be taken and expanded/modified.</p>
     <button id="sampleAleman">Sample text (German)</button>
     <button id="sampleEspañol">Sample text (Spanish)</button>
-    <button id="sampleMixto">Sample text (Spanish/German)</button>
+    <button id="sampleMixto1">Sample text (Spanish/German)</button>
+    <button id="sampleMixto2">Sample text (Portuguese/Italian)</button>
     <button id="sampleRuso">Sample text (Russian)</button>
     <textarea id="textoIngresado" cols="30" rows="10"></textarea>
     <button id="procesar">Procesar</button>
