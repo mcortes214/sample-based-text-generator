@@ -4,7 +4,7 @@ var string = "papepapopa carori ro tamo peno";
 
 $('document').ready(function(){
   analizarTexto(string);
-  generarTexto(5);
+  // generarTexto(5);
 });
 
 function generarTexto(n){
@@ -59,12 +59,17 @@ function analizarTexto(str){
   }
 
   //2- Normalización de las probabilidades: De peso a rangos
-  var ks = Object.keys(probabilidades);
-  var probabilidadesPorLetra;
+  var keysGenerales = Object.keys(probabilidades);
   var letraSeleccionada;
-  for(var i=0; i<ks.length; i++){
-    letraSeleccionada = probabilidades[ks[i]];
+  var probabilidadesPorLetra;
+  //separar cada primera letra con su lista de siguientes letras
+  for(var i=0; i<keysGenerales.length; i++){
+    letraSeleccionada = probabilidades[keysGenerales[i]];
     var keysLetra = Object.keys(letraSeleccionada);
     console.log(keysLetra);
+    console.log(keysLetra.length);
+    for(var j=0; j<keysLetra.length; j++){
+      console.log(probabilidades[keysLetra[j]]);
+    }
   }
 }
