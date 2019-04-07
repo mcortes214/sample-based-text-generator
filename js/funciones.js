@@ -1,13 +1,18 @@
 var probabilidades = {}
+var letrasAGenerar = 100;
 
-var string = "papepapopa carori ro tamo peno";
+var string = "ingresar un texto y clickear el botón para calcular la probabilidad de letras";
 
 $('document').ready(function(){
-  analizarTexto(string);
-  // generarTexto(5);
+  $('#procesar').click(function(){
+    string = $('#textoIngresado').val();
+    analizarTexto(string);
+    $('#textoProcesado').html(generarTexto(letrasAGenerar));
+  });
 });
 
 function generarTexto(n){
+  var textoFinal = '';
   console.log('caracteres a generar: '+n);
   //Selección aleatoria de primera letra
   //Basado en: https://stackoverflow.com/a/15106541/10824377
@@ -15,13 +20,43 @@ function generarTexto(n){
   // console.log(keys);
   var primeraLetraAleatoria = keys[ keys.length * Math.random() << 0];
   var keysPrimeraLetra = probabilidades[primeraLetraAleatoria];
-  // console.log(primeraLetraAleatoria);
-  // console.log(keysPrimeraLetra);
 
-  var letraActual;
+  var letraActual = primeraLetraAleatoria;
   var letraSiguiente;
+  var sumaDeOcurrencias;
+
+  //Loop: Para cada letra generada
+  console.log('----- Inicio de loop');
   for(var i=0; i<n; i++){
+    console.log('-- Nueva letra --');
+    sumaDeOcurrencias=0;
+    textoFinal += letraActual;
+    console.log('Letra actual: '+letraActual);
+    var probsLetraActual = probabilidades[letraActual];
+    console.log('Array de pesos de cada letra que puede seguir a la letra actual: ');
+    console.log(probsLetraActual);
+    var keysLetraActual = Object.keys(probsLetraActual);
+    //Recorrer todas las letras y sumar un número total de ocurrencias
+    var arraySegundasLetrasIteradas = [];
+    for(var j=0; j<keysLetraActual.length; j++){
+      var ocurrenciasSegLetraActual = probsLetraActual[keysLetraActual[j]];
+      sumaDeOcurrencias += ocurrenciasSegLetraActual;
+      for(var k=0; k<ocurrenciasSegLetraActual; k++){
+        arraySegundasLetrasIteradas.push(keysLetraActual[j]);
+      }
+    }
+    console.log('Suma de ocurrencias: '+sumaDeOcurrencias);
+    console.log('Array para selección de número random:');
+    console.log(arraySegundasLetrasIteradas);
+    var r = Math.floor(Math.random()*sumaDeOcurrencias);
+    console.log('Número aleatorio: '+r);
+    letraSiguiente = arraySegundasLetrasIteradas[r];
+    console.log('Letra siguiente: '+letraSiguiente);
+
+    //actualización para el siguiente ciclo
+    letraActual = letraSiguiente;
   }
+  return textoFinal;
 }
 
 function analizarTexto(str){
@@ -55,21 +90,6 @@ function analizarTexto(str){
       else{
         probabilidades[letraActual][letraSiguiente]++;
       }
-    }
-  }
-
-  //2- Normalización de las probabilidades: De peso a rangos
-  var keysGenerales = Object.keys(probabilidades);
-  var letraSeleccionada;
-  var probabilidadesPorLetra;
-  //separar cada primera letra con su lista de siguientes letras
-  for(var i=0; i<keysGenerales.length; i++){
-    letraSeleccionada = probabilidades[keysGenerales[i]];
-    var keysLetra = Object.keys(letraSeleccionada);
-    console.log(keysLetra);
-    console.log(keysLetra.length);
-    for(var j=0; j<keysLetra.length; j++){
-      console.log(probabilidades[keysLetra[j]]);
     }
   }
 }
