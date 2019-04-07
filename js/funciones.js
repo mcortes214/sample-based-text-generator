@@ -5,9 +5,13 @@ var string = "ingresar un texto y clickear el botón para calcular la probabilid
 
 $('document').ready(function(){
   $('#procesar').click(function(){
+    string='';
     string = $('#textoIngresado').val();
     analizarTexto(string);
     $('#textoProcesado').html(generarTexto(letrasAGenerar));
+  });
+  $('#sampleItaliano').click(function(){
+    $('#textoIngresado').html("La battaglia di Waterloo (denominata inizialmente dai francesi battaglia di Mont Saint-Jean e dai prussiani battaglia di Belle-Alliance) si svolse il 18 giugno 1815 durante la guerra della Settima coalizione fra le truppe francesi guidate da Napoleone Bonaparte e gli eserciti britannici del Duca di Wellington e prussiano del feldmaresciallo Gebhard Leberecht von Blücher. Fu una delle più combattute e sanguinose battaglie delle guerre napoleoniche, nonché l'ultima battaglia di Napoleone, segnando la sua definitiva sconfitta e il conseguente esilio a Sant'Elena. La battaglia in realtà ebbe luogo nel territorio del villaggio di Mont-Saint-Jean, situato alcuni chilometri a sud della cittadina di Waterloo, nella quale si trovava il quartier generale del Duca di Wellington. Dopo la fuga di Napoleone dall'isola d'Elba nel marzo 1815, numerosi Stati europei si unirono in un'alleanza militare dando vita alla settima coalizione, con lo scopo di sconfiggere definitivamente l'imperatore francese. Napoleone decise di attaccare di sorpresa i due eserciti che Regno Unito e Prussia avevano raggruppato in Belgio; l'imperatore sperava di raggiungere una rapida vittoria sfruttando la scarsa coesione dei suoi avversari. Due giorni prima di Waterloo i francesi avevano sconfitto i prussiani nella battaglia di Ligny, ma Wellington, informato che Blücher era riuscito a riorganizzare il suo esercito e sembrava intenzionato a marciare in suo aiuto, prese la decisione di rischiare una battaglia contro le forze di Napoleone. Il generale britannico schierò i suoi uomini in difesa lungo la scarpata di Mont-Saint-Jean, vicino alla strada per Bruxelles, confidando nell'aiuto dei prussiani. Napoleone sferrò una serie di sanguinosi attacchi contro le linee britanniche a partire dalle ore 11:30 e nel tardo pomeriggio sembrò vicino alla vittoria, ma l'ostinata resistenza del nemico e l'arrivo in massa dei prussiani decisero alla fine la battaglia a favore dei coalizzati. Ancora oggi nei pressi di Waterloo è ricordata la grande battaglia con una serie di monumenti, ed esiste un museo dedicato al famoso scontro. L'intera zona è un parco storico.");
   });
 });
 
@@ -64,7 +68,7 @@ function analizarTexto(str){
   de la primera palabra como posterior a un espacio. La primera letra de
   la primera palabra no entra en el cálculo de probabilidades, todas las demás sí
   (incluyendo la última letra de la última palabra).*/
-
+  probabilidades = {}
   console.log(str);
 
   //1- Análisis de las letras

@@ -2,19 +2,23 @@
 <html lang="es-AR">
   <head>
     <meta charset="utf-8">
-    <title>Mi sitio</title>
-    <meta name="description" content="Mi descripción">
+    <title>Sample-based Text Generator</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Autor">
-    <meta name="keywords" value="keywords">
-    <link rel="canonical" href="Mi link canónico">
+    <meta name="author" content="">
+    <meta name="keywords" value="">
+    <link rel="canonical" href="">
     <link rel="stylesheet" href="css/estilos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="js/funciones.js"></script>
   </head>
   <body>
-    <h1>Probabilidad de letras</h1>
-    <p>Ingresar un texto y clickear el botón para calcular la probabilidad de letras.</p>
+    <h1>Sample-based Text Generator</h1>
+    <p>This is a Javascript program to procedurally generate text that resembles an input sample text. It was conceived as a tool for conlanging and other artistic uses, as it serves as a generator of random words seemingly pertaining to a certain language or language family; and more interestingly, it allows to mix the "feeling" of several languages, by inputting a sample text in more than one language.</p>
+    <p>This is achieved by analysing the characters that compose the text in pairs, and identifying how often a given letter follows another letter. For example, if the input string is "ananas", there are two instances of "an" and one instance of "as", which means that there is a 66% chance of an A being followed by an N, and a 33% chance of it being followed by an S. Not only letters are considered characters, but also numbers and special characters such as parentheses, which are likewise analysed.</p>
+    <p>After that, the program picks a random initial character and chooses the next one based on those probability rules. It iterates the process over 100 characters to compose a text.</p>
+    <p>This is a work in progress. In its current state the output does resemble the original language of the sample text, but may contain impossible consonant clusters, overly repeated characters or things like consonant-only words (which are illegal in many languages). Also, the way the program works makes it impossible to match opening and closing parentheses or quotes. However it may serve as inspiration, and its source code can be taken and expanded/modified.</p>
+    <button id="sampleItaliano">Sample text (Italian)</button>
     <textarea id="textoIngresado" cols="30" rows="10"></textarea>
     <button id="procesar">Procesar</button>
     <p id="textoProcesado"></p>
